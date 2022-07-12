@@ -141,6 +141,10 @@ ul {
 	text-decoration: none;
 }
 
+.home__photo_min {
+	display: none;
+}
+
 .about-me__container {
 	background-color: #F6F6F6;
 	height: 506px;
@@ -205,6 +209,10 @@ ul {
 	padding-bottom: 44.88px;
 }
 
+.portfolio__item_min {
+	display: none;
+}
+
 .portfolio__link {
 	color: Black;
 	font-family: 'Gilroy-Medium';
@@ -247,5 +255,133 @@ ul {
 }
 
 
+/* adaptive layout */
 
+@media (max-width: 479px) {
 
+	.header__container {
+		/* opacity: 0; */
+		height: 0px;
+		width: auto;
+		border-bottom: none;
+		justify-content: start;
+	}
+
+	.header__nav {
+		display: none;
+	}
+
+	.header__list {
+		display: block;
+	}
+
+	.home__content {
+		display: block;
+		margin-bottom: 100px;
+		padding: auto;
+	}
+
+	.home__name {
+		margin: 0;
+		padding-top: 21px;
+		padding-bottom: 23px;
+	}
+
+	.home__description {
+		padding: 0;
+		margin: 0;
+		max-width: 155.65px;
+		text-align: left;
+	}
+
+	.home__switcher {
+		opacity: 0;
+	}
+
+	.home__background {
+		margin-top: 36.94px;
+		padding-left: auto;
+	}
+	
+	.home__photo {
+		display: none;
+	}
+
+	.home__photo_min {
+		display: block;
+	}
+
+	.about-me__description {
+		padding-left: auto;
+		padding-right: auto;
+	}
+
+	.skills__container {
+		max-height: none;
+	}
+
+	.skills__decription {
+		padding-top: 50px;
+		padding-bottom: 40px;
+	}
+
+	.skills__list {
+		flex-direction: column;
+		align-items: center;
+		margin-bottom: 80px;
+	}
+
+	.skills__item {
+		margin-top: 40px;
+	}
+
+	.skills__item:not(:last-child) {
+		margin-bottom: 40px;
+	}
+
+	.portfolio__container {
+		padding-top: 80px;
+	}
+
+	.portfolio__list {
+		padding-top: 70px;
+		padding-bottom: 0;
+	}
+
+	.portfolio__list:last-child {
+		padding-bottom: 80px;
+	}
+
+	.portfolio__item {
+		display: none;
+	}
+
+	.portfolio__item_min {
+		display: block;
+		padding-bottom: 33px;
+	}
+
+	.contacts__container {
+		padding-top: 82px;
+	}
+
+	.contacts__description {
+		padding-top: 25px;
+		padding-bottom: 40px;
+	}
+
+	.button {
+		height: 42px;
+		width: 316px;
+		border-radius: 50px;
+	}
+
+	.contacts__item:not(:last-child) {
+		padding-right: 50px;
+	}
+
+	.contacts__like {
+		padding-bottom: 90px;
+	}
+	
+}
