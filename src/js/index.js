@@ -34,9 +34,9 @@
 // Выпадающее меню при клике на бургер
 
 const iconBurger = document.querySelector('.header__burger')
+const menuNav = document.querySelector('.header__nav')
 
 if (iconBurger) {
-  const menuNav = document.querySelector('.header__nav')
   iconBurger.addEventListener("click", function(e) {
     document.body.classList.toggle('_lock')
     iconBurger.classList.toggle('_active')
@@ -61,6 +61,14 @@ if (menuLinks.length > 0) {
     if (menuLink.dataset.goto && document.querySelector(menuLink.dataset.goto)) {
       const gotoBlock = document.querySelector(menuLink.dataset.goto)
       const gotoBlockValue = gotoBlock.getBoundingClientRect().top + scrollY - document.querySelector('header').offsetHeight
+
+      // Убираем меню при нажатии на раздел
+
+      if (iconBurger.classList.contains('_active')) {
+        document.body.classList.remove('_lock')
+        iconBurger.classList.remove('_active')
+        menuNav.classList.remove('_active')
+      }
 
       window.scrollTo({
         top: gotoBlockValue,
