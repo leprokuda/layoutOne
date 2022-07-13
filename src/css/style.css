@@ -21,10 +21,23 @@
   box-sizing: border-box;
 }
 
+body {
+	margin: 0;
+}
+
+body._lock {
+	overflow: hidden;
+}
+
 ul {
   margin: 0;
   padding: 0;
   list-style: none;
+}
+
+img {
+	max-width: 100%;
+	height: auto;
 }
 
 .button {
@@ -64,33 +77,39 @@ ul {
 	margin: 0;
 }
 
-/* header {
-	background-color: #fff;
-	position:sticky;
+.header {
+	position: sticky;
 	top: 0;
-} */
+	width: 100%;
+	background-color: white;
+	z-index: 10;
+}
 
 .header__container {
+	max-width: 65vw;
   height: 87.94px;
-	border-bottom: 1px solid #828282;
-	display: flex;
-	justify-content: center;
-	align-items: center;
+	border-bottom: 1.5px solid rgba(130, 130, 130, 1);
+}
 
+.header__menu {
+	display: flex;
+	justify-content: space-between;
+}
+
+.header__nav {
+	height: 87.94px;
+	display: flex;
+	width: 100%;
 }
 
 .header__list {
-  display: flex;
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
 	font-family: 'Gilroy-Bold';
 	font-size: 18px;
 	line-height: 22.28px;
 	margin: auto;
-	/* padding-top: 32.99px;
-	padding-bottom: 31.92px; */
-}
-
-.header__item:not(:last-child) {
-	margin-right: 155.6px;
 }
 
 .header__link {
@@ -98,8 +117,12 @@ ul {
 	text-decoration: none;
 }
 
+.header__burger {
+	display: none;
+}
+
 .home__container {
-	max-width: 940.6px;
+	max-width: 65vw;
 	padding-bottom: 104px;
 }
 
@@ -139,6 +162,11 @@ ul {
 	line-height: 19.81px;
 	font-family: 'Gilroy-Bold';
 	text-decoration: none;
+	margin: 0;
+}
+
+.home__photo {
+	width: 100%;
 }
 
 .home__photo_min {
@@ -184,6 +212,11 @@ ul {
 .skills__item-description {
 	text-align: center;
 	padding-bottom: 15px;
+	font-family: 'Gilroy-Bold';
+	font-size: 14px;
+	line-height: 17px;
+	letter-spacing: 0em;
+	color: rgba(130, 130, 130, 1);
 }
 
 .skills__stars-icon:not(:last-child) {
@@ -204,9 +237,8 @@ ul {
 }
 
 .portfolio__item {
-	width: 936.24px;
-	height: 510px;
 	padding-bottom: 44.88px;
+	width: 65%;
 }
 
 .portfolio__item_min {
@@ -257,27 +289,122 @@ ul {
 
 /* adaptive layout */
 
-@media (max-width: 479px) {
+@media (max-width: 767px) {
+
+	.header {
+		height: 0;
+	}
 
 	.header__container {
-		/* opacity: 0; */
-		height: 0px;
-		width: auto;
-		border-bottom: none;
-		justify-content: start;
+		height: 0;
+		border-bottom: 0;
+	}
+
+	.header__menu {
+		justify-content: flex-end;
 	}
 
 	.header__nav {
-		display: none;
+		position: fixed;
+		top: 0;
+		right: -100%;
+		width: 100%;
+		height: 100%;
+		background-color: white;
+		padding: 0px 30px 30px 30px;
+		transition: right 0.3s ease 0s;
+		overflow: auto;
+	}
+
+	.header__nav._active {
+		right: 0;
 	}
 
 	.header__list {
 		display: block;
+		margin: 0;
+		padding-top: 70px;
+	}
+
+	.header__item:not(:last-child) {
+		margin-bottom: 30px;
+	}
+
+	.header__burger {
+		z-index: 5;
+		display: block;
+		position: absolute;
+		right: 30px;
+		top: 65px;
+		width: 30px;
+		height: 18px;
+		cursor: pointer;
+	}
+
+	.header__burger span,
+	.header__burger::before,
+	.header__burger::after {
+		left: 0;
+		position: absolute;
+		height: 15%;
+		width: 100%;
+		transition: all 0.3s ease 0s;
+		background-color: black;
+	}
+
+	.header__burger::before,
+	.header__burger::after {
+		content: '';
+	}
+
+	.header__burger::before {
+		top: 0;
+	}
+
+	.header__burger::after{
+		bottom: 0;
+	}
+
+	.header__burger span {
+		top: 50%;
+		transform: scale(1) translate(0px, -50%);
+	}
+
+	.header__burger._active span {
+		transform: scale(0) translate(0px, -50%);
+	}
+
+	.header__burger._active::before {
+		top: 50%;
+		transform: rotate(-45deg) translate(0px, -50%);
+		background-color: rgba(130, 130, 130, 1);
+	}
+
+	.header__burger._active::after {
+		bottom: 50%;
+		transform: rotate(45deg) translate(0px, 50%);
+		background-color: rgba(130, 130, 130, 1);
+	}
+
+	.home__switcher {
+		/* display: none; */
+		/* z-index: 5; */
+	}
+
+
+
+}
+
+@media (max-width: 479px) {
+
+	.home__container {
+		padding-left: 25px;
+		padding-bottom: 70px;
 	}
 
 	.home__content {
 		display: block;
-		margin-bottom: 100px;
+		margin-bottom: 40px;
 		padding: auto;
 	}
 
@@ -295,7 +422,14 @@ ul {
 	}
 
 	.home__switcher {
-		opacity: 0;
+		display: none;
+		z-index: 5;
+		position: absolute;
+
+	}
+
+	.home__switcher._active {
+
 	}
 
 	.home__background {
@@ -312,8 +446,8 @@ ul {
 	}
 
 	.about-me__description {
-		padding-left: auto;
-		padding-right: auto;
+		padding-left: 25px;
+		padding-right: 25px;
 	}
 
 	.skills__container {
@@ -385,3 +519,21 @@ ul {
 	}
 	
 }
+
+@media (min-width: 479px) and (max-width: 984px) {
+
+	.skills__item {
+		margin: 10px;
+	}
+
+.skills__stars-icon {
+	max-width: 3vw;
+	min-height: 3vw;
+}
+
+.skills__stars-icon:not(:last-child) {
+	margin: 0;
+}
+
+}
+
